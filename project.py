@@ -13,7 +13,11 @@ class round:
 				players[i*2] += 1
 			else:
 				players[i*2] += 3
-		players.sort.()
+		#'bye' clause
+		if len(players) % 2 != 0:
+			players[-1] += 3
+		print players
+		players.sort()
 		players.reverse()
 		return players
 
@@ -44,8 +48,8 @@ class count:
 		percentage = float(total)/float(tournaments) * 100
 		print "The chance of a 5th round is " + str(percentage) + "%."
 
-c = count()
-c.counter(50000)
-#t = tournament()
-#t.play(players)
+#c = count()
+#c.counter(5)
+t = tournament()
+t.play()
 
