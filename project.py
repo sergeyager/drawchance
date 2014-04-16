@@ -27,18 +27,16 @@ class tournament:
 		n = 18
 		self.players = [0]*n
 	#this repeats the round and calculates the winner
-	def play(self):
+	def start(self):
 		x = round()
 		for i in range(4):
 			self.players = x.match(self.players)
 		# finds if there is a clear winner after x rounds
 	def winner(self):
-		if self.players[0] == self.players[1]:
-			return False
-		else:
-			return True
+		return self.players[0] == self.players[1]:
 
-class count:
+
+class simulation:
 	#core to figuring out if a 5th round is needed
 	def counter(self, tournaments):
 		total = 0
@@ -46,15 +44,15 @@ class count:
 			#create a fresh tournament roster for each trial
 			t = tournament()
 			#run an entire tournament for each trial
-			t.play()
+			t.start()
 			# count if there is a clear winner, if no add 1
 			if t.winner() == False:
 				total += 1
 		percentage = float(total)/float(tournaments) * 100
 		print "The chance of a 5th round is " + str(percentage) + "%."
 
-c = count()
-c.counter(50000)
+s = simulation()
+s.counter(50000)
 #t = tournament()
 #t.play()
 
