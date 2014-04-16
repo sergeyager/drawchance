@@ -16,15 +16,16 @@ class round:
 		#'bye' clause
 		if len(players) % 2 != 0:
 			players[-1] += 3
-		print players
+		#print players
 		players.sort()
 		players.reverse()
 		return players
 
 class tournament:
-	#sets number of players
-	n = 18
-	players = [0]*n
+	def __init__(self):
+		#sets number of players and creates tournament roster
+		n = 18
+		self.players = [0]*n
 	#this repeats the round and calculates the winner
 	def play(self):
 		x = round()
@@ -41,8 +42,10 @@ class count:
 	#core to figuring out if a 5th round is needed
 	def counter(self, tournaments):
 		total = 0
-		t = tournament()
 		for i in range(tournaments):
+			#create a fresh tournament roster for each trial
+			t = tournament()
+			#run an entire tournament for each trial
 			t.play()
 			# count if there is a clear winner, if no add 1
 			if t.winner() == False:
@@ -50,10 +53,10 @@ class count:
 		percentage = float(total)/float(tournaments) * 100
 		print "The chance of a 5th round is " + str(percentage) + "%."
 
-#c = count()
-#c.counter(5)
-t = tournament()
-t.play()
+c = count()
+c.counter(50000)
+#t = tournament()
+#t.play()
 
 #if testing individual features, use t
 #if testing for % of draw, use c
